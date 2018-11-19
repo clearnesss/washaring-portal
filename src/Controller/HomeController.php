@@ -3,16 +3,21 @@
 namespace App\Controller;
 
 
+use App\Service\MessageGenerator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
 class HomeController extends AbstractController
 {
-    public function index(): Response
+    public function index(MessageGenerator $messageGenerator): Response
     {
+
+        $message = $messageGenerator->getHappyMessage();
+        $this->addFlash('success', $message);
+
         return $this->render('@app/pages/home.html.twig', [
-                    'github_link' => 'https://github.com/clearnesss/washaring-portal'
-            ]
-        );
+            'github' => $this->getParameter('github'),
+            'admin' => $this->getParameter('admin')
+        ]);
     }
 }

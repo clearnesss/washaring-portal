@@ -10,3 +10,10 @@ washer-propose:
     path: /proposer-ses-services
     controller: App\Controller\WasherController::propose
 
+user-register:
+    path: /inscription
+    controller: App\Controller\UserController::register
+
+user-login:
+    path: /connexion
+    controller: App\Controller\UserController::login

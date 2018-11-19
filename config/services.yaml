@@ -4,7 +4,11 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: 'en'
+    locale: 'fr'
+    admin:
+        firstname: Julien
+        email : lecarpentier.julien@gmail.com
+    github: https://github.com/clearnesss/washaring-portal
 
 services:
     # default configuration for services in *this* file
@@ -30,3 +34,16 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Service\MessageGenerator:
+        arguments:
+            # the '@' symbol is important: that's what tells the container
+            # you want to pass the *service* whose id is 'monolog.logger.request',
+            # and not just the *string* 'monolog.logger.request'
+            $logger: '@monolog.logger.request'
+
+    App\Util\:
+        resource: '../src/Util'
+        tags: ['util.service_arguments']
+
+    App\Util\String\TransformInterface: '@App\Util\String\FirstNameTransformer'
