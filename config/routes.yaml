@@ -1,3 +1,12 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+index:
+    path: /
+    controller: App\Controller\HomeController::index
+
+washer-search:
+    path: /chercher-une-machine
+    controller: App\Controller\WasherController::search
+
+washer-propose:
+    path: /proposer-ses-services
+    controller: App\Controller\WasherController::propose
+
