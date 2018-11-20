@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <title>{% block title %}Wash(ar)ing{% endblock %}</title>
+
     {% block stylesheets %}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
               integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -25,6 +28,15 @@
             </li>
             <li class="nav-item {% if app.request.get('_route') is same as ('washer-propose') %}active{% endif %}">
                 <a class="nav-link" href="{{ path('washer-propose') }}">Je propose</a>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav">
+            <li class="nav-item {% if app.request.get('_route') is same as ('user-register') %}active{% endif %}">
+                <a class="nav-link" href="{{ path('user-register') }}">S'inscrire</a>
+            </li>
+            <li class="nav-item {% if app.request.get('_route') is same as ('user-login') %}active{% endif %}">
+                <a class="nav-link" href="{{ path('user-login') }}">Se connecter</a>
             </li>
         </ul>
     </div>
